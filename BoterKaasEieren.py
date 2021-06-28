@@ -32,7 +32,7 @@ class BoterKaasEieren:
     def spel_weergeven(self):
         '''
             De functie print de huidige status van het spel.
-            De ingevulde/nog in te vullen opties worden opgehaald uit self.spel_stand.
+            De ingevulde/nog in te vullen opties worden opgehaald uit self.spel_stand en weergeven.
         '''
 
         print("\n\nKies een nummer tussen 1-9, die nog niet is gebruikt.\n")
@@ -129,7 +129,7 @@ class BoterKaasEieren:
             dan wordt het spel afgesloten.
 
             Als het bord vol is (self.spelzet = 9) en er worden meerdere rondes gespeeld,
-            dan wordt de stand en de ronde naar default gezet.
+            dan wordt de stand en de ronde naar default gezet en kan er verder worden gespeeld.
         '''
 
         if self.spelzet == 9 and self.speltype == "1":
@@ -169,11 +169,11 @@ def main():
         Als er 1 ronde wordt gespeeld, wordt het speltype opgeslagen en het spel gestart.
 
         Als er meedere rondes worden gespeeld, wordt het speltype opgeslagen.
-        Zolang geen van de spelers 3 punten heeft, wordt het spel opnieuw gestart.
-        Ook worden self.spel_stand en self.spelzet naar default gezet.
+        Zolang geen van de spelers 3 punten heeft, wordt er doorgespeeld.
+        Elke ronde worden self.spel_stand en self.spelzet terug naar default gezet.
 
         Na iedere ronde wordt de score weergeven.
-        Als er een speler 3 punten heeft, wordt er weergeven welke heeft gewonnen.
+        Als er een speler 3 punten heeft, wordt er weergeven wie er heeft gewonnen.
     '''
 
     speler1 = input("Speler 1, wat is je naam?")
@@ -187,7 +187,6 @@ def main():
         spelen.check_winner()
     elif speltype == "2":
         spelen.set_speltype(speltype)
-        #blijf loopen als speler1 kleiner is dan 3 en blijf loopen als speler2 kleiner is dan 3
         while spelen.get_score_speler1() < 3 and spelen.get_score_speler2() < 3:
             spelen.check_winner()
             spelen.set_spel_stand()
